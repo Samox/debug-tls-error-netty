@@ -14,7 +14,7 @@ COPY src ./src
 RUN mvn clean package
 
 # Create a new image with only the JRE
-FROM amazoncorretto:8
+FROM amazoncorretto:21
 
 # Set the working directory inside the container
 WORKDIR /app
