@@ -7,9 +7,11 @@ WORKDIR /app
 # Copy the Maven project descriptor
 COPY pom.xml .
 
+# Download dependencies
+RUN mvn dependency:go-offline
+
 # Copy the source code
 COPY src ./src
-
 # Build the application
 RUN mvn clean package
 
