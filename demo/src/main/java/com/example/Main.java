@@ -37,17 +37,13 @@ public class Main {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             SslContext sslContext = SslContextBuilder.forClient()
-                                    .trustManager(InsecureTrustManagerFactory.INSTANCE) // Use an insecure trust manager
-                                                                                        // for testing
+                                    .trustManager(InsecureTrustManagerFactory.INSTANCE)
                                     .build();
-                            SSLEngine engine = sslContext.newEngine(ch.alloc());
-                            engine.setUseClientMode(true);
 
-                            // Misconfigure SSL/TLS settings here to intentionally cause handshake failure
-                            // For example:
-                            // engine.setEnabledProtocols(new String[]{"SSLv3"});
-                            // engine.setEnabledCipherSuites(new
-                            // String[]{"TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"});
+                            // Non working SSL
+                            SSLEngine engine = sslContext.newEngine(ch.alloc());
+
+                            engine.setUseClientMode(true);
 
                             ch.pipeline().addLast(new SslHandler(engine));
                         }
