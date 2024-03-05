@@ -40,8 +40,8 @@ public class Main {
                                     .trustManager(InsecureTrustManagerFactory.INSTANCE)
                                     .build();
 
-                            // Non working SSL
-                            SSLEngine engine = sslContext.newEngine(ch.alloc());
+                            // Working SSL
+                            SSLEngine engine = sslContext.newEngine(ch.alloc(), "api.kolet.com", 443);
 
                             engine.setUseClientMode(true);
 
