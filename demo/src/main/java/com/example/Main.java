@@ -27,7 +27,7 @@ import java.net.URISyntaxException;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, URISyntaxException {
-        System.out.println("Hello world!");
+        System.out.println("Java version: " + System.getProperty("java.version"));
 
         URI uri = new URI("https://api.kolet.com");
         String host = uri.getHost();
